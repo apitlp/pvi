@@ -1,0 +1,116 @@
+#add-button {
+    align-self: flex-end;
+    margin-right: 60px;
+}
+
+.students-table {
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.students-table th,
+.students-table td {
+    padding: 10px;
+}
+
+.students-table .circle {
+    margin-left: calc(50% - 13px);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.students-table .circle-active {
+    background: limegreen;
+}
+
+.students-table .circle-inactive {
+    background: lightgray;
+}
+
+.students-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.students-pagination .button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.student-id {
+    display: none;
+}
+
+.modal-window {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.add-edit-window,
+.delete-window {
+    width: 30%;
+    padding: 20px;
+    background: #ffffff;
+    /*border-radius: 10px;*/
+    border: 5px solid #3B8EA5;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.modal-header button {
+    margin-top: 6px;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.modal-form-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-form-item label {
+    width: 50%;
+}
+
+.modal-form-item input,
+.modal-form-item select {
+    width: 100%;
+    padding: 5px;
+}
+
+.modal-message {
+    font-weight: 600;
+    margin-bottom: 75px;
+}
+
+.modal-buttons {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.modal-buttons button {
+    margin-left: 10px;
+}
