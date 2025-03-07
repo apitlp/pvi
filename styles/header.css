@@ -34,13 +34,14 @@ header {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    /*border: none;*/
-    border: 2px solid #F49E4C;
+    border: none;
+    /*border: 2px solid #F49E4C;*/
 }
 
-.notification-icon-circle:hover {
+/*.notification-icon-circle:hover,*/
+.notification-icon-circle-active {
     border: 2px solid #F49E4C;
-    transition: border 0.2s ease-in-out;
+    transition: border 1s ease-out;
 }
 
 .notification-container {
@@ -53,6 +54,7 @@ header {
     border: 2px solid #3B8EA5;
     background: #ffffff;
     padding: 20px 10px 5px;
+    /*cursor: default;*/
 }
 
 .notification {

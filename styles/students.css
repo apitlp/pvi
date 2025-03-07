@@ -60,6 +60,7 @@
 
 .add-edit-window,
 .delete-window {
+    display: none;
     width: 30%;
     padding: 20px;
     background: #ffffff;

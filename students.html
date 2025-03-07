@@ -13,7 +13,7 @@
     <p class="header-title"><a href="./students.html">CMS</a></p>
     <div class="profile-container">
         <div class="notification-wrapper">
-            <a href="./messages.html">
+            <a href="./messages.html" target="_blank">
                 <div class="notification-icon">
                     <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1"
                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -59,7 +59,7 @@
             <p>Andrii Potikha</p>
 
             <ul class="profile-menu">
-                <li>Profile</li>
+                <li><a href="./profile.html">Profile</a></li>
                 <li>Log out</li>
             </ul>
         </div>
@@ -112,8 +112,8 @@
                 </td>
                 <td>
                     <div class="student-buttons">
-                        <button class="button button-disabled">edit</button>
-                        <button class="button button-disabled">remove</button>
+                        <button class="button button-disabled edit-button" disabled>edit</button>
+                        <button class="button button-disabled remove-button" disabled>remove</button>
                     </div>
                 </td>
                 <td class="student-id">1</td>
@@ -129,8 +129,8 @@
                 </td>
                 <td>
                     <div class="student-buttons">
-                        <button class="button button-disabled">edit</button>
-                        <button class="button button-disabled">remove</button>
+                        <button class="button button-disabled edit-button" disabled>edit</button>
+                        <button class="button button-disabled remove-button" disabled>remove</button>
                     </div>
                 </td>
                 <td class="student-id">2</td>
@@ -146,8 +146,8 @@
                 </td>
                 <td>
                     <div class="student-buttons">
-                        <button class="button button-disabled">edit</button>
-                        <button class="button button-disabled">remove</button>
+                        <button class="button button-disabled edit-button" disabled>edit</button>
+                        <button class="button button-disabled remove-button" disabled>remove</button>
                     </div>
                 </td>
                 <td class="student-id">3</td>
@@ -163,8 +163,8 @@
                 </td>
                 <td>
                     <div class="student-buttons">
-                        <button class="button button-disabled">edit</button>
-                        <button class="button button-disabled">remove</button>
+                        <button class="button button-disabled edit-button" disabled>edit</button>
+                        <button class="button button-disabled remove-button" disabled>remove</button>
                     </div>
                 </td>
                 <td class="student-id">4</td>
@@ -183,120 +183,122 @@
 </main>
 
 <section class="modal-window">
-    <!--    <div class="add-edit-window">-->
-    <!--        <div class="modal-header">
-                    <h2 class="modal-title">Edit Student</h2>
-                    <button class="button">X</button>
-                </div> -->
+    <div class="add-edit-window">
+        <div class="modal-header">
+            <h2 class="modal-title">Edit Student</h2>
+            <button class="button modal-close-button">X</button>
+        </div>
 
-    <!--        <form class="modal-form">-->
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="group-select">Group</label>-->
-    <!--                <select id="group-select" required>-->
-    <!--                    <option value="none" disabled selected>Select Group</option>-->
-    <!--                    <option value="PZ-21">PZ-21</option>-->
-    <!--                    <option value="PZ-22">PZ-22</option>-->
-    <!--                    <option value="PZ-23">PZ-23</option>-->
-    <!--                    <option value="PZ-24">PZ-24</option>-->
-    <!--                    <option value="PZ-25">PZ-25</option>-->
-    <!--                    <option value="PZ-26">PZ-26</option>-->
-    <!--                </select>-->
-    <!--            </div>-->
+        <form class="modal-form">
+            <div class="modal-form-item">
+                <label for="group-select">Group</label>
+                <select id="group-select" required>
+                    <option value="none" disabled selected>Select Group</option>
+                    <option value="PZ-21">PZ-21</option>
+                    <option value="PZ-22">PZ-22</option>
+                    <option value="PZ-23">PZ-23</option>
+                    <option value="PZ-24">PZ-24</option>
+                    <option value="PZ-25">PZ-25</option>
+                    <option value="PZ-26">PZ-26</option>
+                </select>
+            </div>
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="first-name-input">First name</label>-->
-    <!--                <input type="text" id="first-name-input" required />-->
-    <!--            </div>-->
+            <div class="modal-form-item">
+                <label for="first-name-input">First name</label>
+                <input type="text" id="first-name-input" required />
+            </div>
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="last-name-input">Last name</label>-->
-    <!--                <input type="text" id="last-name-input" required />-->
-    <!--            </div>-->
+            <div class="modal-form-item">
+                <label for="last-name-input">Last name</label>
+                <input type="text" id="last-name-input" required />
+            </div>
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="gender-select">Gender</label>-->
-    <!--                <select id="gender-select" required>-->
-    <!--                    <option value="none" disabled selected>Select Gender</option>-->
-    <!--                    <option value="Male">Male</option>-->
-    <!--                    <option value="Female">Female</option>-->
-    <!--                </select>-->
-    <!--            </div>-->
+            <div class="modal-form-item">
+                <label for="gender-select">Gender</label>
+                <select id="gender-select" required>
+                    <option value="none" disabled selected>Select Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="birthday-input">Birthday</label>-->
-    <!--                <input type="date" id="birthday-input" required placeholder="____.__.__" />-->
-    <!--            </div>-->
+            <div class="modal-form-item">
+                <label for="birthday-input">Birthday</label>
+                <input type="date" id="birthday-input" required placeholder="____.__.__" />
+            </div>
 
-    <!--            <div class="modal-form-buttons">-->
-    <!--                <button class="button">Ok</button>-->
-    <!--                <button class="button">Create</button>-->
-    <!--            </div>-->
-    <!--        </form>-->
-    <!--    </div>-->
-    <!--    <div class="add-edit-window">-->
-    <!--        <div class="modal-header">-->
-    <!--            <h2 class="modal-title">Edit Student</h2>-->
-    <!--            <button class="button">X</button>-->
-    <!--        </div>-->
+            <div class="modal-buttons">
+                <button class="button modal-cancel-button">Cancel</button>
+                <button class="button modal-success-button">Edit</button>
+            </div>
+        </form>
+    </div>
+<!--        <div class="add-edit-window">-->
+<!--            <div class="modal-header">-->
+<!--                <h2 class="modal-title">Edit Student</h2>-->
+<!--                <button class="button">X</button>-->
+<!--            </div>-->
 
-    <!--        <form class="modal-form">-->
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="group-select">Group</label>-->
-    <!--                <select id="group-select" required>-->
-    <!--                    <option value="none" disabled>Select Group</option>-->
-    <!--                    <option value="PZ-21">PZ-21</option>-->
-    <!--                    <option value="PZ-22">PZ-22</option>-->
-    <!--                    <option value="PZ-23">PZ-23</option>-->
-    <!--                    <option value="PZ-24">PZ-24</option>-->
-    <!--                    <option value="PZ-25" selected>PZ-25</option>-->
-    <!--                    <option value="PZ-26">PZ-26</option>-->
-    <!--                </select>-->
-    <!--            </div>-->
+<!--            <form class="modal-form">-->
+<!--                <div class="modal-form-item">-->
+<!--                    <label for="group-select">Group</label>-->
+<!--                    <select id="group-select" required>-->
+<!--                        <option value="none" disabled>Select Group</option>-->
+<!--                        <option value="PZ-21">PZ-21</option>-->
+<!--                        <option value="PZ-22">PZ-22</option>-->
+<!--                        <option value="PZ-23">PZ-23</option>-->
+<!--                        <option value="PZ-24">PZ-24</option>-->
+<!--                        <option value="PZ-25" selected>PZ-25</option>-->
+<!--                        <option value="PZ-26">PZ-26</option>-->
+<!--                    </select>-->
+<!--                </div>-->
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="first-name-input">First name</label>-->
-    <!--                <input type="text" id="first-name-input" required value="Andrii" />-->
-    <!--            </div>-->
+<!--                <div class="modal-form-item">-->
+<!--                    <label for="first-name-input">First name</label>-->
+<!--                    <input type="text" id="first-name-input" required value="Andrii" />-->
+<!--                </div>-->
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="last-name-input">Last name</label>-->
-    <!--                <input type="text" id="last-name-input" required value="Potikha" />-->
-    <!--            </div>-->
+<!--                <div class="modal-form-item">-->
+<!--                    <label for="last-name-input">Last name</label>-->
+<!--                    <input type="text" id="last-name-input" required value="Potikha" />-->
+<!--                </div>-->
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="gender-select">Gender</label>-->
-    <!--                <select id="gender-select" required>-->
-    <!--                    <option value="none" disabled>Select Gender</option>-->
-    <!--                    <option value="Male" selected>Male</option>-->
-    <!--                    <option value="Female">Female</option>-->
-    <!--                </select>-->
-    <!--            </div>-->
+<!--                <div class="modal-form-item">-->
+<!--                    <label for="gender-select">Gender</label>-->
+<!--                    <select id="gender-select" required>-->
+<!--                        <option value="none" disabled>Select Gender</option>-->
+<!--                        <option value="Male" selected>Male</option>-->
+<!--                        <option value="Female">Female</option>-->
+<!--                    </select>-->
+<!--                </div>-->
 
-    <!--            <div class="modal-form-item">-->
-    <!--                <label for="birthday-input">Birthday</label>-->
-    <!--                <input type="date" id="birthday-input" required placeholder="____.__.__" value="2005-12-18" />-->
-    <!--            </div>-->
+<!--                <div class="modal-form-item">-->
+<!--                    <label for="birthday-input">Birthday</label>-->
+<!--                    <input type="date" id="birthday-input" required placeholder="____.__.__" value="2005-12-18" />-->
+<!--                </div>-->
 
-    <!--            <div class="modal-buttons">-->
-    <!--                <button class="button">Ok</button>-->
-    <!--                <button class="button">Save</button>-->
-    <!--            </div>-->
-    <!--        </form>-->
-    <!--    </div>-->
+<!--            <div class="modal-buttons">-->
+<!--                <button class="button">Ok</button>-->
+<!--                <button class="button">Save</button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
     <div class="delete-window">
         <div class="modal-header">
             <h2 class="modal-title">Warning</h2>
-            <button class="button">X</button>
+            <button class="button modal-close-button">X</button>
         </div>
 
         <p class="modal-message">Are you sure you want to delete user Andrii Potikha?</p>
 
         <div class="modal-buttons">
             <button class="button">Ok</button>
-            <button class="button">Cancel</button>
+            <button class="button modal-cancel-button">Cancel</button>
         </div>
     </div>
 </section>
 
+<script src="./scripts/header.js"></script>
+<script src="./scripts/students.js"></script>
 </body>
 </html>
