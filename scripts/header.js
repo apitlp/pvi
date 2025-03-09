@@ -1,12 +1,17 @@
-const notificationIcon = document.querySelector('.notification-icon');
-const notificationIconCircle = document.querySelector('.notification-icon-circle');
-const notificationContainer = document.querySelector('.notification-container');
+const notificationWrapper = document.querySelector(".notification-wrapper");
+const notificationIcon = document.querySelector(".notification-icon");
+const notificationIconCircle = document.querySelector(".notification-icon-circle");
+const notificationContainer = document.querySelector(".notification-container");
 
-const profileName = document.querySelector('.profile p');
-const profileMenu = document.querySelector('.profile-menu');
+const profileContainer = document.querySelector(".profile");
+const profileMenu = document.querySelector(".profile-menu");
 
-notificationIcon.addEventListener('mouseover', () => {
+notificationWrapper.addEventListener("mouseover", () => {
     notificationContainer.style.display = 'block';
+});
+
+notificationWrapper.addEventListener("mouseleave", () => {
+    notificationContainer.style.display = 'none';
 });
 
 notificationIcon.addEventListener('click', () => {
@@ -15,20 +20,16 @@ notificationIcon.addEventListener('click', () => {
     }
 });
 
-notificationContainer.addEventListener("mouseleave", e => {
-    notificationContainer.style.display = 'none';
-});
-
 window.addEventListener('keydown', e => {
     if (e.key === 'Escape')
         notificationIconCircle.classList.add('notification-icon-circle-active');
 });
 
-profileName.addEventListener('mouseover', () => {
+profileContainer.addEventListener('mouseover', () => {
     profileMenu.style.display = 'block';
 });
 
-profileMenu.addEventListener('mouseleave', () => {
+profileContainer.addEventListener('mouseleave', () => {
     profileMenu.style.display = 'none';
 });
 

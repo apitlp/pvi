@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/side-menu.css">
@@ -68,17 +69,23 @@
 
 <main>
     <aside>
+        <div class="burger-menu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+
         <nav>
             <ul>
-                <a href="./dashboard.html">
-                    <li>Dashboard</li>
-                </a>
-                <a href="./students.html">
-                    <li class="nav-active">Students</li>
-                </a>
-                <a href="./tasks.html">
-                    <li>Tasks</li>
-                </a>
+                <li>
+                    <a href="./dashboard.html">Dashboard</a>
+                </li>
+                <li class="nav-active">
+                    <a href="./students.html">Students</a>
+                </li>
+                <li>
+                    <a href="./tasks.html">Tasks</a>
+                </li>
             </ul>
         </nav>
     </aside>
@@ -98,6 +105,7 @@
                 <th>Birthday</th>
                 <th>Status</th>
                 <th>Options</th>
+                <th class="student-id">Id</th>
             </tr>
             </thead>
             <tbody>
@@ -185,7 +193,7 @@
 <section class="modal-window">
     <div class="add-edit-window">
         <div class="modal-header">
-            <h2 class="modal-title">Edit Student</h2>
+            <h2 class="modal-title"></h2>
             <button class="button modal-close-button">X</button>
         </div>
 
@@ -193,7 +201,7 @@
             <div class="modal-form-item">
                 <label for="group-select">Group</label>
                 <select id="group-select" required>
-                    <option value="none" disabled selected>Select Group</option>
+                    <option value="" disabled selected>Select Group</option>
                     <option value="PZ-21">PZ-21</option>
                     <option value="PZ-22">PZ-22</option>
                     <option value="PZ-23">PZ-23</option>
@@ -216,7 +224,7 @@
             <div class="modal-form-item">
                 <label for="gender-select">Gender</label>
                 <select id="gender-select" required>
-                    <option value="none" disabled selected>Select Gender</option>
+                    <option value="" disabled selected>Select Gender</option>
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select>
@@ -224,81 +232,33 @@
 
             <div class="modal-form-item">
                 <label for="birthday-input">Birthday</label>
-                <input type="date" id="birthday-input" required placeholder="____.__.__" />
+                <input type="date" id="birthday-input" required />
             </div>
 
             <div class="modal-buttons">
                 <button class="button modal-cancel-button">Cancel</button>
-                <button class="button modal-success-button">Edit</button>
+                <button class="button modal-success-button"></button>
             </div>
         </form>
     </div>
-<!--        <div class="add-edit-window">-->
-<!--            <div class="modal-header">-->
-<!--                <h2 class="modal-title">Edit Student</h2>-->
-<!--                <button class="button">X</button>-->
-<!--            </div>-->
 
-<!--            <form class="modal-form">-->
-<!--                <div class="modal-form-item">-->
-<!--                    <label for="group-select">Group</label>-->
-<!--                    <select id="group-select" required>-->
-<!--                        <option value="none" disabled>Select Group</option>-->
-<!--                        <option value="PZ-21">PZ-21</option>-->
-<!--                        <option value="PZ-22">PZ-22</option>-->
-<!--                        <option value="PZ-23">PZ-23</option>-->
-<!--                        <option value="PZ-24">PZ-24</option>-->
-<!--                        <option value="PZ-25" selected>PZ-25</option>-->
-<!--                        <option value="PZ-26">PZ-26</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-
-<!--                <div class="modal-form-item">-->
-<!--                    <label for="first-name-input">First name</label>-->
-<!--                    <input type="text" id="first-name-input" required value="Andrii" />-->
-<!--                </div>-->
-
-<!--                <div class="modal-form-item">-->
-<!--                    <label for="last-name-input">Last name</label>-->
-<!--                    <input type="text" id="last-name-input" required value="Potikha" />-->
-<!--                </div>-->
-
-<!--                <div class="modal-form-item">-->
-<!--                    <label for="gender-select">Gender</label>-->
-<!--                    <select id="gender-select" required>-->
-<!--                        <option value="none" disabled>Select Gender</option>-->
-<!--                        <option value="Male" selected>Male</option>-->
-<!--                        <option value="Female">Female</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-
-<!--                <div class="modal-form-item">-->
-<!--                    <label for="birthday-input">Birthday</label>-->
-<!--                    <input type="date" id="birthday-input" required placeholder="____.__.__" value="2005-12-18" />-->
-<!--                </div>-->
-
-<!--            <div class="modal-buttons">-->
-<!--                <button class="button">Ok</button>-->
-<!--                <button class="button">Save</button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
     <div class="delete-window">
         <div class="modal-header">
             <h2 class="modal-title">Warning</h2>
             <button class="button modal-close-button">X</button>
         </div>
 
-        <p class="modal-message">Are you sure you want to delete user Andrii Potikha?</p>
+        <p class="modal-message"></p>
 
         <div class="modal-buttons">
-            <button class="button">Ok</button>
             <button class="button modal-cancel-button">Cancel</button>
+            <button class="button modal-success-button">Ok</button>
         </div>
     </div>
 </section>
 
 <script src="./scripts/header.js"></script>
+<script src="./scripts/sideMenu.js"></script>
 <script src="./scripts/students.js"></script>
 </body>
 </html>
