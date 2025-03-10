@@ -207,7 +207,7 @@ function clearFields() {
 function addStudent(group, firstName, lastName, gender, birthday) {
     const newTableRow = `
         <tr>
-            <td><input type="checkbox" /></td>            
+            <td><input aria-label="select student ${nextId}" type="checkbox"/></td>            
             <td>${group}</td>
             <td>${firstName} ${lastName}</td>
             <td>${gender}</td>
