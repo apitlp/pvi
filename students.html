@@ -16,9 +16,9 @@
         <div class="notification-wrapper">
             <a href="./messages.html" target="_blank" aria-label="Notification">
                 <div class="notification-icon">
-                    <svg fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1"
-                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         viewBox="0 0 611.999 611.999" xml:space="preserve" stroke="#ffffff">
+                    <svg fill="#ffffff" height="200px" width="200px" id="Capa_1"
+                         xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 611.999 611.999" stroke="#ffffff">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier"><g><g><g><path
@@ -199,6 +199,8 @@
             <button class="button modal-close-button">X</button>
         </div>
 
+        <div class="modal-error"></div>
+
         <form class="modal-form">
             <div class="modal-form-item">
                 <label for="group-select">Group</label>
@@ -236,6 +238,8 @@
                 <label for="birthday-input">Birthday</label>
                 <input type="date" id="birthday-input" required />
             </div>
+
+            <input type="hidden" value="" id="id-input" />
 
             <div class="modal-buttons">
                 <button class="button modal-cancel-button">Cancel</button>

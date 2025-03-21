@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .modal-title {
@@ -112,6 +112,17 @@
 
 .modal-buttons button {
     margin-left: 10px;
+}
+
+.modal-error {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid red;
+    color: red;
+    background: rgba(255, 216, 216, 0.3);
 }
 
 @media (max-width: 1200px) {

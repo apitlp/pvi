@@ -9,6 +9,7 @@ const firstNameInput = document.querySelector("#first-name-input");
 const lastNameInput = document.querySelector("#last-name-input");
 const genderSelect = document.querySelector("#gender-select");
 const birthdayInput = document.querySelector("#birthday-input");
+const idInput = document.querySelector("#id-input");
 
 const addButton = document.querySelector("#add-button");
 const modalCloseButtons = document.querySelectorAll(".modal-close-button");
@@ -22,6 +23,7 @@ const deleteWindow = document.querySelector(".delete-window");
 
 const addEditTitle = document.querySelector(".add-edit-window .modal-title");
 const modalMessage = document.querySelector(".modal-message");
+const modalErrorContainer = document.querySelector(".modal-error");
 
 assignCheckboxes();
 
@@ -81,27 +83,30 @@ modalCancelButtons.forEach((button) => {
 addEditSuccessButton.addEventListener("click", (e) => {
     e.preventDefault();
 
+    if (!validateFields())
+        return;
+
     const group = groupSelect.value;
     const firstName = firstNameInput.value;
     const lastName = lastNameInput.value;
     const gender = genderSelect.value;
     const birthday = birthdayInput.value;
-
-    if (hasEmptyFields()) {
-        alert("Please, fill all fields");
-        return;
-    }
+    let id = 0;
 
     if (addEditSuccessButton.innerText === "Create") {
-        addStudent(group, firstName, lastName, gender, birthday);
+        id = addStudent(group, firstName, lastName, gender, birthday);
     }
     if (addEditSuccessButton.innerText === "Save") {
+        id = Number(studentsCheckedRow.querySelector("td:nth-child(8)").innerText);
+
         studentsCheckedRow.querySelector("td:nth-child(2)").innerText = group;
         studentsCheckedRow.querySelector("td:nth-child(3)").innerText = `${firstName} ${lastName}`;
         studentsCheckedRow.querySelector("td:nth-child(4)").innerText = gender;
         studentsCheckedRow.querySelector("td:nth-child(5)").innerText = birthday
             .split("-").reverse().join(".");
     }
+
+    console.log(studentToJson(id, group, firstName, lastName, gender, birthday));
 
     closeModal();
     clearFields();
@@ -167,6 +172,7 @@ function checkboxCallback(e) {
             genderSelect.value = studentsCheckedRow.querySelector("td:nth-child(4)").innerText;
             birthdayInput.value = studentsCheckedRow.querySelector("td:nth-child(5)").innerText
                 .split(".").reverse().join("-");
+            idInput.value = studentsCheckedRow.querySelector("td:nth-child(8)").innerText;
 
             modalWindow.style.display = "flex";
             addEditWindow.style.display = "block";
@@ -205,6 +211,8 @@ function clearFields() {
 }
 
 function addStudent(group, firstName, lastName, gender, birthday) {
+    let id = nextId;
+
     const newTableRow = `
         <tr>
             <td><input aria-label="select student ${nextId}" type="checkbox"/></td>            
@@ -228,4 +236,86 @@ function addStudent(group, firstName, lastName, gender, birthday) {
     studentsTableBody.innerHTML += newTableRow;
     assignCheckboxes();
     nextId++;
+
+    return id;
+}
+
+function validateFields() {
+    clearValidationErrors();
+
+    let errorMessages = [];
+
+    if (!validateGroup(groupSelect.value))
+        errorMessages.push("Please, select a valid group");
+    if (!validateName(firstNameInput.value))
+        errorMessages.push("Please, enter a valid first name");
+    if (!validateName(lastNameInput.value))
+        errorMessages.push("Please, enter a valid last name");
+    if (!(["M", "F"].includes(genderSelect.value)))
+        errorMessages.push("Please, select a valid gender");
+    if (!validateDate(birthdayInput.value))
+        errorMessages.push("Please, enter a valid birthday");
+
+    if (errorMessages.length === 0)
+        return true;
+
+    showValidationErrors(errorMessages);
+    return false;
+}
+
+function clearValidationErrors() {
+    Array.from(modalErrorContainer.children).forEach((error) => error.remove());
+    modalErrorContainer.style.display = "none";
+}
+
+function showValidationErrors(errorMessages) {
+    if (errorMessages.length === 0)
+        return;
+
+    errorMessages.forEach((message) => {
+        let errorMessage = document.createElement("p");
+        errorMessage.innerText = message;
+        errorMessage.classList.add("modal-error-message");
+
+        modalErrorContainer.appendChild(errorMessage);
+    });
+
+    modalErrorContainer.style.display = "flex";
+}
+
+function validateGroup(group) {
+    const groupRegex = /^PZ-2[1-6]$/;
+
+    return groupRegex.test(group);
+}
+
+function validateName(name) {
+    const nameRegex = /^[A-Z][A-Za-z]+(-[A-Za-z]+)*$/;
+
+    return nameRegex.test(name);
+}
+
+function validateDate(dateString) {
+    const dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+    if (!dateRegex.test(dateString))
+        return false;
+
+    const [year, month, day] = dateString.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+
+    return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+}
+
+function studentToJson(id, group, firstName, lastName, gender, birthday) {
+    const student = {
+        id,
+        group,
+        firstName,
+        lastName,
+        gender,
+        birthday,
+    };
+
+    return JSON.stringify(student);
 }
