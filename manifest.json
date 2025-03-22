@@ -1,0 +1,23 @@
+{
+    "name": "Students for PVI",
+    "short_name": "StudentsPVI",
+    "start_url": "/students.html",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#3B8EA5",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/assets/icons/icon.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/assets/images/screenshot.png",
+            "sizes": "1080x1920",
+            "type": "image/png"
+        }
+    ]
+}

@@ -54,6 +54,7 @@ addButton.addEventListener("click", () => {
     addEditTitle.innerText = "Add Student";
     addEditSuccessButton.innerText = "Create";
 
+    clearValidationErrors();
     modalWindow.style.display = "flex";
     addEditWindow.style.display = "block";
 })
@@ -174,6 +175,7 @@ function checkboxCallback(e) {
                 .split(".").reverse().join("-");
             idInput.value = studentsCheckedRow.querySelector("td:nth-child(8)").innerText;
 
+            clearValidationErrors();
             modalWindow.style.display = "flex";
             addEditWindow.style.display = "block";
         });
