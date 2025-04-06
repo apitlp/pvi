@@ -1,0 +1,172 @@
+#add-button {
+    align-self: flex-end;
+    margin-right: 4vw;
+}
+
+.students-table {
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.students-table th,
+.students-table td {
+    padding: 10px;
+}
+
+.students-table input[type="checkbox"] {
+    accent-color: #2D728F;
+}
+
+.students-table .circle {
+    margin-left: calc(50% - 13px);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.students-table .circle-active {
+    background: limegreen;
+}
+
+.students-table .circle-inactive {
+    background: lightgray;
+}
+
+.students-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.students-pagination .button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.student-id {
+    display: none;
+}
+
+.modal-window {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.add-edit-window,
+.delete-window {
+    display: none;
+    width: 30%;
+    padding: 20px;
+    background: #ffffff;
+    border: 5px solid #3B8EA5;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.modal-form-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-form-item label {
+    width: 50%;
+}
+
+.modal-form-item input,
+.modal-form-item select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #AAAAAA;
+}
+
+.modal-message {
+    font-weight: 600;
+    margin-bottom: 75px;
+}
+
+.modal-buttons {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.modal-buttons button {
+    margin-left: 10px;
+}
+
+.modal-error {
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid red;
+    color: red;
+    background: rgba(255, 216, 216, 0.3);
+}
+
+@media (max-width: 1200px) {
+    #add-button {
+        margin-right: 4vw;
+    }
+}
+
+@media (max-width: 992px) {
+    #add-button {
+        margin-right: 5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-buttons button {
+        margin: 2px 0;
+    }
+
+    .students-table .circle {
+        width: 20px;
+        height: 20px;
+        margin: calc(50% - 10px);
+    }
+
+    .add-edit-window,
+    .delete-window {
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .students-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    #add-button {
+        margin-right: 0;
+    }
+
+    .add-edit-window,
+    .delete-window {
+        width: 80%;
+    }
+}
