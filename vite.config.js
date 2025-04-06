@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/header.css',
                 'resources/css/side-menu.css',
                 'resources/css/students.css',
+                'resources/css/auth.css',
                 'resources/js/app.js',
                 'resources/js/header.js',
                 'resources/js/sideMenu.js',

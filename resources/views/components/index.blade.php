@@ -61,7 +61,7 @@
 
             <ul class="profile-menu">
                 <li><a href="./profile">Profile</a></li>
-                <li>Log out</li>
+                <li><a href="./logout">Log out</a></li>
             </ul>
         </div>
     </div>
