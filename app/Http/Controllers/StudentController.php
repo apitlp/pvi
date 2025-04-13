@@ -135,6 +135,7 @@ class StudentController extends Controller
         $existingStudent = Student::where('first_name', $request->first_name)
             ->where('last_name', $request->last_name)
             ->where('created_by', Auth::id())
+            ->where('id', '!=', $id)
             ->first();
 
         if ($existingStudent)
