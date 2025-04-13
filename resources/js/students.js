@@ -1,8 +1,8 @@
-const studentsTableBody = document.querySelector('.students-table tbody');
+const studentsTableBody = document.querySelector(".students-table tbody");
 const studentsTableCheckbox = document.querySelector(".students-table thead input[type='checkbox']");
 let studentsCheckedRow = null;
 let studentsToDelete = [];
-let nextId = studentsTableBody.children.length + 1;
+const paginationContainer = document.querySelector(".students-pagination");
 
 const groupSelect = document.querySelector("#group-select");
 const firstNameInput = document.querySelector("#first-name-input");
@@ -25,6 +25,10 @@ const addEditTitle = document.querySelector(".add-edit-window .modal-title");
 const modalMessage = document.querySelector(".modal-message");
 const modalErrorContainer = document.querySelector(".modal-error");
 
+const BASE_API_URL = "http://127.0.0.1:8000/api";
+let currentPage = 1;
+
+await renderPage();
 assignCheckboxes();
 
 studentsTableCheckbox.addEventListener("change", e => {
@@ -54,7 +58,9 @@ addButton.addEventListener("click", () => {
     addEditTitle.innerText = "Add Student";
     addEditSuccessButton.innerText = "Create";
 
+    clearFields();
     clearValidationErrors();
+
     modalWindow.style.display = "flex";
     addEditWindow.style.display = "block";
 })
@@ -67,8 +73,7 @@ modalCancelButtons.forEach((button) => {
 
         if (addEditWindow.style.display === "block") {
             if (addEditSuccessButton.innerText === "Create" && !hasEmptyFields())
-                addStudent(groupSelect.value, firstNameInput.value, lastNameInput.value, genderSelect.value,
-                    birthdayInput.value);
+                alert("Adding has been cancelled.");
 
             if (addEditSuccessButton.innerText === "Save")
                 alert("Changes have been discarded.");
@@ -81,7 +86,7 @@ modalCancelButtons.forEach((button) => {
     })
 })
 
-addEditSuccessButton.addEventListener("click", (e) => {
+addEditSuccessButton.addEventListener("click", async (e) => {
     e.preventDefault();
 
     if (!validateFields())
@@ -92,35 +97,79 @@ addEditSuccessButton.addEventListener("click", (e) => {
     const lastName = lastNameInput.value;
     const gender = genderSelect.value;
     const birthday = birthdayInput.value;
-    let id = 0;
 
-    if (addEditSuccessButton.innerText === "Create") {
-        id = addStudent(group, firstName, lastName, gender, birthday);
+    const requestBody = {
+        group,
+        first_name: firstName,
+        last_name: lastName,
+        gender,
+        birthday
+    };
+
+    try {
+        if (addEditSuccessButton.innerText === "Create") {
+            const data = await fetchStudentsApi("add", requestBody);
+
+            currentPage = data.last_page;
+        }
+        if (addEditSuccessButton.innerText === "Save") {
+            const studentId = Number(studentsCheckedRow.querySelector("td.student-id")
+                .innerText);
+
+            await fetchStudentsApi("edit", requestBody, studentId);
+        }
+
+        closeModal();
+        await renderPage();
+        clearFields();
+    } catch (e) {
+        const { errors } = e.body;
+
+        showValidationErrors(Object.values(errors));
     }
-    if (addEditSuccessButton.innerText === "Save") {
-        id = Number(studentsCheckedRow.querySelector("td:nth-child(8)").innerText);
-
-        studentsCheckedRow.querySelector("td:nth-child(2)").innerText = group;
-        studentsCheckedRow.querySelector("td:nth-child(3)").innerText = `${firstName} ${lastName}`;
-        studentsCheckedRow.querySelector("td:nth-child(4)").innerText = gender;
-        studentsCheckedRow.querySelector("td:nth-child(5)").innerText = birthday
-            .split("-").reverse().join(".");
-    }
-
-    console.log(studentToJson(id, group, firstName, lastName, gender, birthday));
-
-    closeModal();
-    clearFields();
 });
 
-deleteSuccessButton.addEventListener("click", () => {
-    studentsTableBody.querySelectorAll("tr").forEach((tableRow) => {
-        if (studentsToDelete.includes(tableRow.querySelector("td:nth-child(3)").innerText))
-            tableRow.remove();
-    });
+deleteSuccessButton.addEventListener("click", async () => {
+    for (const checkbox of studentsTableBody.querySelectorAll("input[type='checkbox']:checked")) {
+        const tableRow = checkbox.closest("tr");
+        await fetchStudentsApi(
+            "remove",
+            null,
+            Number(tableRow.querySelector("td.student-id").innerText)
+        );
+    }
 
     closeModal();
+    await renderPage();
 });
+
+async function renderPage()
+{
+    try {
+        const data = await fetchStudentsApi("get", null, null);
+
+        studentsTableBody.innerHTML = "";
+        paginationContainer.innerHTML = "";
+
+        if (data.students.data.length === 0)
+            return;
+
+        data.students.data.forEach(student => {
+            const {id, group, first_name: firstName, last_name: lastName, gender, birthday} = student;
+
+            renderStudent(id, group, firstName, lastName, gender, birthday);
+        });
+
+        data.students.links.forEach(link => {
+            const { url, label, active } = link;
+
+            renderPaginationButton(label, active, url);
+            assignPaginationButtons();
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 function assignCheckboxes() {
     studentsTableBody.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
@@ -212,12 +261,10 @@ function clearFields() {
     birthdayInput.value = "";
 }
 
-function addStudent(group, firstName, lastName, gender, birthday) {
-    let id = nextId;
-
+function renderStudent(id, group, firstName, lastName, gender, birthday) {
     const newTableRow = `
         <tr>
-            <td><input aria-label="select student ${nextId}" type="checkbox"/></td>
+            <td><input aria-label="select student ${id}" type="checkbox"/></td>
             <td>${group}</td>
             <td>${firstName} ${lastName}</td>
             <td>${gender}</td>
@@ -231,15 +278,12 @@ function addStudent(group, firstName, lastName, gender, birthday) {
                     <button class="button button-disabled remove-button">remove</button>
                 </div>
             </td>
-            <td class="student-id">${nextId}</td>
+            <td class="student-id">${id}</td>
         </tr>
         `;
 
     studentsTableBody.innerHTML += newTableRow;
     assignCheckboxes();
-    nextId++;
-
-    return id;
 }
 
 function validateFields() {
@@ -312,15 +356,92 @@ function validateDate(dateString) {
     return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
 }
 
-function studentToJson(id, group, firstName, lastName, gender, birthday) {
-    const student = {
-        id,
-        group,
-        firstName,
-        lastName,
-        gender,
-        birthday,
+async function fetchStudentsApi(action, body = null, id = null) {
+    const { requestType, method } = getRequestConfig(action, body, id);
+
+    const response = await fetch(`${BASE_API_URL}/students${requestType}`, {
+        method,
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Bearer " + sessionStorage.getItem("api_token"),
+        },
+        body: (method === "GET") ? null : JSON.stringify(body),
+        credentials: "include"
+    });
+
+    if (!response.ok) {
+        const error = new Error("API request failed");
+        error.status = response.status;
+        error.body = await response.json();
+
+        throw error;
+    }
+
+    return await response.json();
+}
+
+function getRequestConfig(action, body = null, id = null) {
+    const config = {
+        add: {
+            requestType: "/add",
+            method: "POST"
+        },
+        edit: {
+            requestType: `/edit/${id}`,
+            method: "PUT"
+        },
+        remove: {
+            requestType: `/remove/${id}`,
+            method: "DELETE"
+        },
+        get: {
+            requestType: `?page=${currentPage}`,
+            method: "GET"
+        }
     };
 
-    return JSON.stringify(student);
+    return config[action];
+}
+
+function renderPaginationButton(label, isActive, url) {
+    const mapLabel = {
+        "&laquo; Previous": "&lt;",
+        "Next &raquo;": "&gt;"
+    };
+    const isDisabled = url === null;
+
+    if (Object.keys(mapLabel).includes(label))
+        label = mapLabel[label];
+
+    const newPaginationButton = `
+        <button class="button ${(isActive) ? "button-active" : ""} ${(isDisabled) ? "button-disabled" : ""}"
+                ${(isDisabled) ? "disabled" : ""}>
+            ${label}
+        </button>
+    `;
+
+    paginationContainer.innerHTML += newPaginationButton;
+}
+
+function assignPaginationButtons() {
+    paginationContainer.querySelectorAll("button")
+        .forEach((paginationButton) => {
+            paginationButton.addEventListener("click", async () => {
+                if (paginationButton.innerHTML.trim() === "&lt;") {
+                    currentPage--;
+                    await renderPage();
+                    return;
+                }
+                if (paginationButton.innerHTML.trim() === "&gt;")
+                {
+                    currentPage++;
+                    await renderPage();
+                    return;
+                }
+
+                currentPage = Number(paginationButton.innerText);
+                await renderPage();
+            });
+        });
 }

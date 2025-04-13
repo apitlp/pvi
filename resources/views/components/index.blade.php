@@ -6,6 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @if(Auth::check() && Auth::user()->api_token)
+        <script>
+            // Store the API token in localStorage when the page loads after login
+            sessionStorage.setItem('api_token', '{{ Auth::user()->api_token }}');
+        </script>
+    @endif
+
     @vite(['resources/css/app.css', 'resources/css/header.css', 'resources/css/side-menu.css'])
     <title>{{ $current_page }}</title>
 </head>
@@ -56,8 +63,8 @@
         </div>
 
         <div class="profile">
-            <img src="{{ asset('images/profile-picture.jpg') }}" alt="profile picture">
-            <p>Andrii Potikha</p>
+            <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
+            <p>{{ Auth::user()->first_name . " " . Auth::user()->last_name }}</p>
 
             <ul class="profile-menu">
                 <li><a href="./profile">Profile</a></li>

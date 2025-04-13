@@ -19,84 +19,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input aria-label="select student 1" type="checkbox"/></td>
-            <td>PZ-25</td>
-            <td>Andrii Potikha</td>
-            <td>M</td>
-            <td>18.12.2005</td>
-            <td class="circle-wrapper">
-                <div class="circle circle-active"></div>
-            </td>
-            <td>
-                <div class="student-buttons">
-                    <button class="button button-disabled edit-button" disabled>edit</button>
-                    <button class="button button-disabled remove-button" disabled>remove</button>
-                </div>
-            </td>
-            <td class="student-id">1</td>
-        </tr>
-        <tr>
-            <td><input aria-label="select student 2" type="checkbox"/></td>
-            <td>PZ-25</td>
-            <td>Polina Bakhmetieva</td>
-            <td>F</td>
-            <td>13.08.2006</td>
-            <td class="circle-wrapper">
-                <div class="circle circle-inactive"></div>
-            </td>
-            <td>
-                <div class="student-buttons">
-                    <button class="button button-disabled edit-button" disabled>edit</button>
-                    <button class="button button-disabled remove-button" disabled>remove</button>
-                </div>
-            </td>
-            <td class="student-id">2</td>
-        </tr>
-        <tr>
-            <td><input aria-label="select student 3" type="checkbox"/></td>
-            <td>PZ-25</td>
-            <td>Vladyslav Yedynak</td>
-            <td>M</td>
-            <td>16.03.2006</td>
-            <td class="circle-wrapper">
-                <div class="circle circle-inactive"></div>
-            </td>
-            <td>
-                <div class="student-buttons">
-                    <button class="button button-disabled edit-button" disabled>edit</button>
-                    <button class="button button-disabled remove-button" disabled>remove</button>
-                </div>
-            </td>
-            <td class="student-id">3</td>
-        </tr>
-        <tr>
-            <td><input aria-label="select student 4" type="checkbox"/></td>
-            <td>PZ-25</td>
-            <td>Oleksandr Zelinskyi</td>
-            <td>M</td>
-            <td>18.06.2006</td>
-            <td class="circle-wrapper">
-                <div class="circle circle-inactive"></div>
-            </td>
-            <td>
-                <div class="student-buttons">
-                    <button class="button button-disabled edit-button" disabled>edit</button>
-                    <button class="button button-disabled remove-button" disabled>remove</button>
-                </div>
-            </td>
-            <td class="student-id">4</td>
-        </tr>
         </tbody>
     </table>
 
-    <div class="students-pagination">
-        <button class="button">&lt;</button>
-        <button class="button button-active">1</button>
-        <button class="button">2</button>
-        <button class="button">3</button>
-        <button class="button">&gt;</button>
-    </div>
+    <div class="students-pagination"></div>
     </section>
     </main>
 

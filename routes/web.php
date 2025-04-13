@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 // Login
@@ -18,14 +19,16 @@ Route::get('register', [AuthController::class, 'showRegisterForm'])
 
 Route::post('register', [AuthController::class, 'register']);
 
-// Display pages
-Route::get('/', function () {
-    return view('students');
-})->name("index")->middleware('auth');
+// Students
+Route::get('/', [StudentController::class, 'showStudentsPage'])
+    ->name("index")
+    ->middleware('auth');
 
 Route::get('/students', function () {
     return redirect()->route('index');
 });
+
+// Other pages
 
 Route::get('/dashboard', function () {
     return view('dashboard');

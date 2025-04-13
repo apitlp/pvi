@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -20,8 +21,15 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $user->api_token = Str::random(60);
+            $user->save();
+
+            session()->put("api_token", $user->api_token);
+
             return redirect()->intended('students');
+        }
 
         return back()->withErrors([
             'email' => 'No such account registered'
