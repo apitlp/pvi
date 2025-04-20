@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -33,6 +34,18 @@ class StudentController extends Controller
         $students = Student::query()
             ->where('created_by', Auth::id())
             ->paginate(self::PER_PAGE, ['*'], 'page', $page);
+
+        $students->getCollection()
+            ->transform(function ($student) {
+                $isOnline = User::query()
+                    ->where('first_name', $student->first_name)
+                    ->where('last_name', $student->last_name)
+                    ->whereNotNull('api_token')
+                    ->exists();
+
+                $student->is_online = $isOnline;
+                return $student;
+        });
 
         return response()->json([
             'status' => 'success',

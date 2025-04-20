@@ -155,9 +155,11 @@ async function renderPage()
             return;
 
         data.students.data.forEach(student => {
-            const {id, group, first_name: firstName, last_name: lastName, gender, birthday} = student;
+            const {id, group, first_name: firstName, last_name: lastName, gender, birthday, is_online: isOnline}
+                = student;
 
-            renderStudent(id, group, firstName, lastName, gender, birthday);
+            renderStudent(id, group, firstName, lastName, gender, birthday,
+                isOnline);
         });
 
         data.students.links.forEach(link => {
@@ -261,7 +263,7 @@ function clearFields() {
     birthdayInput.value = "";
 }
 
-function renderStudent(id, group, firstName, lastName, gender, birthday) {
+function renderStudent(id, group, firstName, lastName, gender, birthday, isOnline) {
     const newTableRow = `
         <tr>
             <td><input aria-label="select student ${id}" type="checkbox"/></td>
@@ -270,7 +272,7 @@ function renderStudent(id, group, firstName, lastName, gender, birthday) {
             <td>${gender}</td>
             <td>${birthday.split("-").reverse().join(".")}</td>
             <td class="circle-wrapper">
-                <div class="circle circle-inactive"></div>
+                <div class="circle circle-${isOnline ? "active" : "inactive"}"></div>
             </td>
             <td>
                 <div class="student-buttons">

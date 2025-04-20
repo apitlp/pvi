@@ -69,6 +69,11 @@ class AuthController extends Controller
 
     public function logout()
     {
+        Auth::user()->
+            update([
+                'api_token' => null
+            ]
+        );
         Auth::logout();
 
         return redirect()->route('login');
