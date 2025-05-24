@@ -11,10 +11,12 @@ export default defineConfig({
                 'resources/css/side-menu.css',
                 'resources/css/students.css',
                 'resources/css/auth.css',
+                'resources/css/messages.css',
                 'resources/js/app.js',
                 'resources/js/header.js',
                 'resources/js/sideMenu.js',
-                'resources/js/students.js'
+                'resources/js/students.js',
+                'resources/js/messages.js',
             ],
             refresh: true,
         }),
