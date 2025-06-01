@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/js/sideMenu.js',
                 'resources/js/students.js',
                 'resources/js/messages.js',
+                'resources/js/socket.js'
             ],
             refresh: true,
         }),

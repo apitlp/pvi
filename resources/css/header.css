@@ -45,6 +45,8 @@ header {
 
 .notification-container {
     display: none;
+    flex-direction: column-reverse;
+    align-items: stretch;
     position: absolute;
     z-index: 1;
     width: 400px;
@@ -53,7 +55,7 @@ header {
     border: 2px solid #3B8EA5;
     background: #ffffff;
     padding: 20px 10px 5px;
-    /*cursor: default;*/
+    cursor: default;
 }
 
 .notification {
@@ -63,6 +65,7 @@ header {
     font-size: 1rem;
     color: #151515;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .notification-user {

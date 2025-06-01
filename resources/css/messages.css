@@ -79,6 +79,34 @@
     color: white;
 }
 
+.chat-members div {
+    display: flex;
+
+    align-items: center;
+    gap: 15px;
+}
+
+.chat-members div > span {
+    position: relative;
+}
+
+.member-online-status {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    right: -2px;
+    bottom: 0;
+}
+
+.member-online-status-active {
+    background-color: #7FFF00;
+}
+
+.member-online-status-inactive {
+    background-color: #FF6347;
+}
+
 .chat-add-member {
     font-size: 1.5rem;
     cursor: pointer;
@@ -110,7 +138,11 @@
 }
 
 .chat-message p {
-    padding: 10px;
+    padding: 5px 10px;
+}
+
+.chat-message .chat-message-sender-name {
+    font-weight: 600;
 }
 
 .chat-message-mine {
@@ -161,12 +193,12 @@
 }
 
 .modal-window {
-    display: flex;
+    display: none;
 }
 
 .create-chat-room-window {
-    /*display: none;*/
-    display: flex;
+    display: none;
+    /*display: flex;*/
     flex-direction: column;
     width: 30%;
     padding: 20px;
@@ -208,8 +240,8 @@
 }
 
 .add-members-window {
-    /*display: none;*/
-    display: flex;
+    display: none;
+    /*display: flex;*/
     flex-direction: column;
     width: 30%;
     padding: 20px;

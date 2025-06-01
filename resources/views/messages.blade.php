@@ -6,75 +6,41 @@
             <button class="button" id="open-create-chat-button">+ Create new chat room</button>
 
             <div class="chat-rooms">
-                <div class="chat-room">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="chat room image" />
+{{--                <div class="chat-room">--}}
+{{--                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="chat room image" />--}}
 
-                    <p class="chat-room-name">PZ</p>
-                </div>
-
-                <div class="chat-room chat-room-active">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="chat room image" />
-
-                    <p class="chat-room-name">Polina Bakhmetieva</p>
-                </div>
-
-                <div class="chat-room">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="chat room image" />
-
-                    <p class="chat-room-name">Vladyslav Yedynak</p>
-                </div>
-
-                <div class="chat-room">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="chat room image" />
-
-                    <p class="chat-room-name">Oleksandr Zelinskyi</p>
-                </div>
+{{--                    <p class="chat-room-name">PZ</p>--}}
+{{--                </div>--}}
             </div>
         </div>
 
         <div class="chat-wrapper">
-            <h2 class="chat-title">Polina Bakhmetieva</h2>
+            <h2 class="chat-title"></h2>
 
-            <p class="chat-members">
+            <div class="chat-members">
                 <span>Members:</span>
                 <span class="chat-add-member" id="open-add-members-span">+</span>
-                <span><img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member"></span>
-                <span><img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member"></span>
-            </p>
+                <div>
+{{--                    <span>--}}
+{{--                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">--}}
+{{--                        <span class="member-online-status member-online-status-active"></span>--}}
+{{--                    </span>--}}
+                </div>
+            </div>
 
             <div class="chat-messages">
-                <div class="chat-message chat-message-others">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi autem delectus dolorum!
-                        Cum doloremque earum et illo molestiae necessitatibus nemo neque, nobis, nostrum obcaecati
-                        pariatur quasi rerum, voluptate voluptatum.
-                    </p>
-                </div>
+{{--                <div class="chat-message chat-message-others">--}}
+{{--                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">--}}
+{{--                    <div>--}}
+{{--                        <p class="chat-message-sender-name">Lorem Ipsum:</p>--}}
 
-                <div class="chat-message chat-message-others">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">
-                    <p>
-                        Lorem ipsum dolor sit amet
-                    </p>
-                </div>
-
-                <div class="chat-message chat-message-mine">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi autem delectus dolorum!
-                        Cum doloremque earum et illo molestiae necessitatibus nemo neque
-                    </p>
-                </div>
-
-                <div class="chat-message chat-message-others">
-                    <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="member">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi autem delectus dolorum!
-                        Cum doloremque earum et illo molestiae necessitatibus nemo neque, nobis, nostrum obcaecati
-                        pariatur quasi rerum, voluptate voluptatum.
-                    </p>
-                </div>
+{{--                        <p class="chat-message-text">--}}
+{{--                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi autem delectus dolorum!--}}
+{{--                            Cum doloremque earum et illo molestiae necessitatibus nemo neque, nobis, nostrum obcaecati--}}
+{{--                            pariatur quasi rerum, voluptate voluptatum.--}}
+{{--                        </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
             <div class="chat-input-container">
@@ -107,80 +73,13 @@
                 <input type="text" id="new-chat-member-input" placeholder="Search users..." class="modal-input">
 
                 <div class="modal-members-container">
-                    <div class="modal-member">
-                        <input type="checkbox" />
+{{--                    <div class="modal-member">--}}
+{{--                        <input type="checkbox" />--}}
 
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
+{{--                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">--}}
 
-                        <p>Polina Bakhmetieva</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Oleksandr Zelinskyi</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Vladyslav Yedynak</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Roman Volkovnytskyi</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Nazarii Horoshko</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Kateryna Havryshchuk</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Oleksii Mahinskyi</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Mariia Lytvyn</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Danylo Voitynskyi</p>
-                    </div>
+{{--                        <p>Polina Bakhmetieva</p>--}}
+{{--                    </div>--}}
                 </div>
             </div>
 
@@ -207,80 +106,13 @@
                 <input type="text" id="new-chat-member-input" placeholder="Search users..." class="modal-input">
 
                 <div class="modal-members-container">
-                    <div class="modal-member">
-                        <input type="checkbox" />
+{{--                    <div class="modal-member">--}}
+{{--                        <input type="checkbox" />--}}
 
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
+{{--                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">--}}
 
-                        <p>Polina Bakhmetieva</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Oleksandr Zelinskyi</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Vladyslav Yedynak</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Roman Volkovnytskyi</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Nazarii Horoshko</p>
-                    </div>
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Kateryna Havryshchuk</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Oleksii Mahinskyi</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Mariia Lytvyn</p>
-                    </div>
-
-
-                    <div class="modal-member">
-                        <input type="checkbox" />
-
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="profile picture">
-
-                        <p>Danylo Voitynskyi</p>
-                    </div>
+{{--                        <p>Polina Bakhmetieva</p>--}}
+{{--                    </div>--}}
                 </div>
             </div>
 
@@ -289,4 +121,5 @@
     </section>
 
     @vite('resources/js/messages.js')
+    @vite('resources/js/socket.js')
 </x-index>

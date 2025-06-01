@@ -8,7 +8,6 @@
 
     @if(Auth::check() && Auth::user()->api_token)
         <script>
-            // Store the API token in localStorage when the page loads after login
             sessionStorage.setItem('api_token', '{{ Auth::user()->api_token }}');
         </script>
     @endif
@@ -21,7 +20,7 @@
     <p class="header-title"><a href="./students">CMS</a></p>
     <div class="profile-container">
         <div class="notification-wrapper">
-            <a href="./messages" target="_blank" aria-label="Notification">
+            <a href="./messages" aria-label="Notification">
                 <div class="notification-icon">
                     <svg fill="#ffffff" height="200px" width="200px" id="Capa_1"
                          xmlns="http://www.w3.org/2000/svg"
@@ -39,26 +38,26 @@
             </a>
 
             <div class="notification-container">
-                <div class="notification">
-                    <div class="notification-user">
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="">
-                        <p>Vladyslav Ye.</p>
-                    </div>
-                    <p class="notification-message">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </div>
+{{--                <div class="notification">--}}
+{{--                    <div class="notification-user">--}}
+{{--                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="">--}}
+{{--                        <p>Vladyslav Ye.</p>--}}
+{{--                    </div>--}}
+{{--                    <p class="notification-message">--}}
+{{--                        Lorem ipsum dolor sit amet consectetur adipisicing elit.--}}
+{{--                    </p>--}}
+{{--                </div>--}}
 
-                <div class="notification">
-                    <div class="notification-user">
-                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="">
-                        <p>Polina B.</p>
-                    </div>
-                    <p class="notification-message">
-                        Ad alias aut corporis distinctio dolores eaque enim, excepturi fugiat. Ad alias aut corporis
-                        distinctio dolores eaque enim, excepturi fugiat.
-                    </p>
-                </div>
+{{--                <div class="notification">--}}
+{{--                    <div class="notification-user">--}}
+{{--                        <img src="{{ asset('images/blank-profile-picture.jpg') }}" alt="">--}}
+{{--                        <p>Polina B.</p>--}}
+{{--                    </div>--}}
+{{--                    <p class="notification-message">--}}
+{{--                        Ad alias aut corporis distinctio dolores eaque enim, excepturi fugiat. Ad alias aut corporis--}}
+{{--                        distinctio dolores eaque enim, excepturi fugiat.--}}
+{{--                    </p>--}}
+{{--                </div>--}}
             </div>
         </div>
 
